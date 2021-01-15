@@ -3,7 +3,7 @@ using XiangJiang.Core;
 
 namespace XiangJiang.Windows.Common
 {
-    public class WindowsNameHelper
+    public class WindowsHelper
     {
         public static string GetSid(string windowsUserName)
         {

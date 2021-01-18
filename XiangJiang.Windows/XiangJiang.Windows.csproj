@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="5.0.0" />
     <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
-    <PackageReference Include="XiangJiang" Version="1.0.9" />
+    <PackageReference Include="XiangJiang" Version="1.0.10" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.assets\nugetico.png">

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>基于.NET 5.0的Windows 平台相关开发辅助类库，文档：https://github.com/YanZhiwei/XiangJiang.Windows/wiki; 欢迎PR和Star</Description>
     <Authors>YanZhiwei</Authors>

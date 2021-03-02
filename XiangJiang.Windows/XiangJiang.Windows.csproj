@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <Version>2.0.1</Version>
+    <TargetFrameworks>net5.0-windows;netstandard2.0</TargetFrameworks>
+    <Version>2.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>基于.NET 5.0的Windows 平台相关开发辅助类库，文档：https://github.com/YanZhiwei/XiangJiang.Windows/wiki; 欢迎PR和Star</Description>
     <Authors>YanZhiwei</Authors>
@@ -18,7 +18,7 @@
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="5.0.0" />
     <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
     <PackageReference Include="System.ServiceProcess.ServiceController" Version="5.0.0" />
-    <PackageReference Include="XiangJiang" Version="1.0.10" />
+    <PackageReference Include="XiangJiang" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.assets\nugetico.png">

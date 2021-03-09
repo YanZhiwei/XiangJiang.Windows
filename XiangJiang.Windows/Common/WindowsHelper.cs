@@ -57,5 +57,11 @@ namespace XiangJiang.Windows.Common
 
             return new ReadOnlyCollection<WindowsAccount>(users);
         }
+
+        public static bool IsAdministrator()
+        {
+            return (new WindowsPrincipal(WindowsIdentity.GetCurrent()))
+                .IsInRole(WindowsBuiltInRole.Administrator);
+        }
     }
 }

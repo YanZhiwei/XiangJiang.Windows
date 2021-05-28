@@ -5,14 +5,14 @@ using System.Threading;
 
 namespace XiangJiang.Windows.Core
 {
-    public sealed class SingleInstance : IDisposable
+    public sealed class SingleGlobalInstance : IDisposable
     {
         private readonly bool _crossSessions;
         private bool _hasHandle;
         private string _instanceName;
         private Mutex _mutex;
 
-        public SingleInstance(string instanceName, bool crossSessions = false)
+        public SingleGlobalInstance(string instanceName, bool crossSessions = false)
         {
             _instanceName = instanceName;
             _crossSessions = crossSessions;
@@ -51,7 +51,7 @@ namespace XiangJiang.Windows.Core
 
         public bool Acquire(uint timeout = 0)
         {
-            _hasHandle = timeout == 0 ? _mutex.WaitOne(Timeout.Infinite, false) : _mutex.WaitOne((int)timeout, false);
+            _hasHandle = timeout == 0 ? _mutex.WaitOne(Timeout.Infinite, false) : _mutex.WaitOne((int) timeout, false);
             return _hasHandle;
         }
     }

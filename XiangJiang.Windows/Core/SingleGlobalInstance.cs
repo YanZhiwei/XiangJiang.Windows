@@ -7,17 +7,16 @@ namespace XiangJiang.Windows.Core
 {
     public sealed class SingleInstance : IDisposable
     {
-        private readonly bool _acrossSessions;
-        private readonly uint _timeout;
-        public bool _hasHandle;
+        private readonly bool _crossSessions;
+        private bool _hasHandle;
         private string _instanceName;
         private Mutex _mutex;
 
-        public SingleInstance(string instanceName, bool acrossSessions = false, uint timeout = 0)
+        public SingleInstance(string instanceName, bool crossSessions = false)
         {
             _instanceName = instanceName;
-            _acrossSessions = acrossSessions;
-            _timeout = timeout;
+            _crossSessions = crossSessions;
+            CreateMutex();
         }
 
         public void Dispose()
@@ -32,7 +31,7 @@ namespace XiangJiang.Windows.Core
 
         private bool CreateMutex()
         {
-            if (_acrossSessions)
+            if (_crossSessions)
             {
                 _instanceName = $"Global\\{_instanceName}";
                 var allowEveryoneRule =
@@ -50,23 +49,10 @@ namespace XiangJiang.Windows.Core
             return createNew;
         }
 
-        public bool Acquire()
+        public bool Acquire(uint timeout = 0)
         {
-            try
-            {
-                CreateMutex();
-                if (_timeout == 0)
-                    _hasHandle = _mutex.WaitOne(Timeout.Infinite, false);
-                else
-                    _hasHandle = _mutex.WaitOne((int) _timeout, false);
-
-                if (_hasHandle == false)
-                    throw new TimeoutException("Timeout waiting for exclusive access on SingleInstance");
-            }
-            catch (AbandonedMutexException)
-            {
-                _hasHandle = true;
-            }
+            _hasHandle = timeout == 0 ? _mutex.WaitOne(Timeout.Infinite, false) : _mutex.WaitOne((int)timeout, false);
+            return _hasHandle;
         }
     }
 }
